@@ -15,6 +15,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.CELO,
   ChainId.BNB,
   ChainId.AVALANCHE,
+  ChainId.BaseGoerliTestnet
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -72,6 +73,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.MOONBEAM;
     case 43114:
       return ChainId.AVALANCHE;
+    case 84531:
+      return ChainId.BaseGoerliTestnet;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
