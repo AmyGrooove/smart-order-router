@@ -15,7 +15,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.CELO,
   ChainId.BNB,
   ChainId.AVALANCHE,
-  ChainId.BaseGoerliTestnet
+  ChainId.BASE_GOERLI
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -74,7 +74,7 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
     case 43114:
       return ChainId.AVALANCHE;
     case 84531:
-      return ChainId.BaseGoerliTestnet;
+      return ChainId.BASE_GOERLI;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -96,6 +96,7 @@ export enum ChainName {
   MOONBEAM = 'moonbeam-mainnet',
   BNB = 'bnb-mainnet',
   AVALANCHE = 'avalanche-mainnet',
+  BASE_GOERLI = "base-goerli"
 }
 
 
@@ -166,6 +167,11 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
     'AVALANCHE',
     '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
   ],
+  [ChainId.BASE_GOERLI]: [
+    'ETH',
+    'ETHER',
+    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+  ],
 };
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
@@ -184,6 +190,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.MOONBEAM]: NativeCurrencyName.MOONBEAM,
   [ChainId.BNB]: NativeCurrencyName.BNB,
   [ChainId.AVALANCHE]: NativeCurrencyName.AVALANCHE,
+  [ChainId.BASE_GOERLI]: NativeCurrencyName.ETHER,
 };
 
 export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
@@ -218,6 +225,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.MOONBEAM;
     case 43114:
       return ChainName.AVALANCHE;
+    case 84531:
+      return ChainName.BASE_GOERLI;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -255,6 +264,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_BNB!;
     case ChainId.AVALANCHE:
       return process.env.JSON_RPC_PROVIDER_AVALANCHE!;
+    case ChainId.BASE_GOERLI:
+      return process.env.JSON_RPC_PROVIDER_BASE_GOERLI!;
     default:
       throw new Error(`Chain id: ${id} not supported`);
   }
@@ -367,6 +378,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WAVAX',
     'Wrapped AVAX'
+  ),
+  [ChainId.BASE_GOERLI]: new Token(
+    1,
+    '0xD4a42C344ED114D89eA920d3BBC898F189fAf466',
+    18,
+    'WETH',
+    'Wrapped Ether'
   ),
 };
 

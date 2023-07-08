@@ -1,5 +1,6 @@
 {
-  "name": "@uniswap/smart-order-router-amy",
+  "name": "@amygrooove1/smart-order-router-horiza-fork",
+  "version": "1.0.0",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
@@ -110,5 +111,8 @@
   },
   "oclif": {
     "commands": "./cli/commands"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
